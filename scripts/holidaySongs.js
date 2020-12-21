@@ -67,3 +67,6 @@ const holidaySongs = function() {
 }();
 
 export default holidaySongs;
+
+//MIT License
+//Copyright(c) 2020 Martin Nguyen

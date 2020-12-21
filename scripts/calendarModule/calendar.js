@@ -124,3 +124,6 @@ const calendar = function() {
 }();
 
 export default calendar;
+
+//MIT License
+//Copyright(c) 2020 Martin Nguyen

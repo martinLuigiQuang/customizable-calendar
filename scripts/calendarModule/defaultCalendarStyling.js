@@ -168,3 +168,6 @@ const defaultCalendarStyling = function() {
 }();
 
 export default defaultCalendarStyling;
+
+//MIT License
+//Copyright(c) 2020 Martin Nguyen

@@ -196,3 +196,6 @@ const calendarGenerator = function() {
 }();
 
 export default calendarGenerator;
+
+//MIT License
+//Copyright(c) 2020 Martin Nguyen

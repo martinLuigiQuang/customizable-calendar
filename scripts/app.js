@@ -21,3 +21,6 @@ if (document.readyState === 'complete') {
     });
     document.removeEventListener('DOMContentLoaded', contentLoaded);
 };
+
+//MIT License
+//Copyright(c) 2020 Martin Nguyen

@@ -16,8 +16,7 @@ const holidaySongs = function() {
         {youtubeCode: 'AN_R4pR1hck', title: 'it\'s the most wonderful time of the year'},
         {youtubeCode: 'hwacxSnc4tI', title: 'the christmas song'},
         {youtubeCode: 'R8CBoVc_OMI', title: 'santa claus is comin\'-to town'},
-        {youtubeCode: 'pvA7-EjaSPI', title: 'have yourself a merry little christmas'},
-        {youtubeCode: '3Uo0JAUWijM', title: 'happy new year'}
+        {youtubeCode: 'pvA7-EjaSPI', title: 'have yourself a merry little christmas'}
     ];
 
     // function to handle form submission
@@ -33,10 +32,10 @@ const holidaySongs = function() {
     const getSong = function(chosenDate) {
         if (chosenDate) {
             const chosenDateObj = new Date(chosenDate);
-            const songIndex = chosenDateObj.getDate() - calendar.today.getDate();
+            const songIndex = Math.floor(Math.random()*songs.length);
             return `
                 ${
-                    songIndex >= 0 && songIndex < 12 && chosenDateObj.getFullYear() === 2020
+                    chosenDateObj.getFullYear() === 2020
                         ?   `<h3>
                                 Your song for ${chosenDate} is: 
                                 <a href="https://www.youtube.com/watch?v=${songs[songIndex].youtubeCode}" target="_blank">${songs[songIndex].title}</a>

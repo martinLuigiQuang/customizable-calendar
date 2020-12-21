@@ -7,7 +7,7 @@ const calendar = function() {
     let chosenDate = today; // the first time the calendar is loaded the default chosen date is the current date
     let calendarMonth = today.getMonth(); // the index of the month to display on calendar navigation bar; January = 0, February = 1, etc...
     let calendarYear = today.getFullYear(); // the year to display on calendar navigation bar
-    let minimized = 'minimized'; // class name to toggle calendar between normal and minimized; default is normal; if minimized, the value is set to 'minimized'
+    let minimized = 'minimized'; // variable to toggle calendar between normal and minimized; default is normal; if minimized, the value is set to 'minimized', else it is an empty string
 
     // calendarEventListeners object to hold all of the event listeners for the user's interactions with the calendar
     const calendarEventListeners = {

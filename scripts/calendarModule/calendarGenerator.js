@@ -5,7 +5,7 @@ const calendarGenerator = function() {
     let chosenDate = ''; // the first time the calendar is loaded the default chosen date is the current date
     let calendarMonth = today.getMonth(); // the index of the month to display on calendar navigation bar; January = 0, February = 1, etc...
     let calendarYear = today.getFullYear(); // the year to display on calendar navigation bar
-    let minimized = 'minimized';
+    let minimized = 'minimized'; // variable to toggle calendar between normal and minimized; default is normal; if minimized, the value is set to 'minimized', else it is an empty string
 
     // fillCalendar function to generate the days in a particular month
     // The function returns a filledCalendar array with the days in their correct indexed positions
@@ -102,7 +102,7 @@ const calendarGenerator = function() {
         `;
     };
 
-    // getChosenDate function to carry the user's chosen date from calendar.js module and bind it to the chosenDate variable of this module
+    // importFromCalendar function to carry the user's chosen date from calendar.js module and bind it to the chosenDate variable of this module
     // usersChosenDate param refers to the user's chosen date information from calendar.js module
     const importFromCalendar = function(usersChosenDate, year, month, isMinimized) {
         chosenDate = usersChosenDate;
@@ -163,7 +163,7 @@ const calendarGenerator = function() {
         // Else generate the calendar navigation bar, weekdays, and the monthly calendar itself
         return `
             <label for="calendar">Pick a date:</label>
-            <input type="text" name="calendar" id="calendar" ${chosenDate ? `value=${chosenDate.toLocaleDateString()}` : `placeholder="mm/dd/yyyy"`} readonly>
+            <input type="text" name="calendar" id="calendar" ${chosenDate ? `value=${chosenDate.toLocaleDateString()}` : `placeholder="yyyy-mm-dd"`} readonly>
             <section class="calendar">
                 ${
                     minimized

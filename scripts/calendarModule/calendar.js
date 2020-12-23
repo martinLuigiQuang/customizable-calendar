@@ -14,7 +14,6 @@ const calendar = function() {
         // getChosenDate function to bind the user's chosen date to the global chosenDate variable and also pass it to calendarGenerator.js module via getChosenDate method
         handleChosenDate: function(day) {
             chosenDate = new Date(calendarYear, calendarMonth, day);
-            console.log(chosenDate)
             // export the user's chosen date (if any), current calendar year and month, and whether or not the calendar is minimized to the calendarGenerator module to generate new calendar
             calendarGenerator.importFromCalendar(chosenDate, calendarYear, calendarMonth, minimized);
             // build new calendar with the new imports from calendarGenerator module

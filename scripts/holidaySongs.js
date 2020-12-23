@@ -16,7 +16,9 @@ const holidaySongs = function() {
         {youtubeCode: 'AN_R4pR1hck', title: 'it\'s the most wonderful time of the year'},
         {youtubeCode: 'hwacxSnc4tI', title: 'the christmas song'},
         {youtubeCode: 'R8CBoVc_OMI', title: 'santa claus is comin\'-to town'},
-        {youtubeCode: 'pvA7-EjaSPI', title: 'have yourself a merry little christmas'}
+        {youtubeCode: 'pvA7-EjaSPI', title: 'have yourself a merry little christmas'},
+        {youtubeCode: 'Aop6YF1Xqqg', title: 'auld lang syne'},
+        {youtubeCode: '3Uo0JAUWijM', title: 'happy new year'}
     ];
 
     // function to handle form submission
@@ -32,13 +34,26 @@ const holidaySongs = function() {
     const getSong = function(chosenDate) {
         if (chosenDate) {
             const chosenDateObj = new Date(chosenDate);
-            const songIndex = Math.floor(Math.random()*songs.length);
+            const songIndex = Math.floor(Math.random()*songs.length - 2);
+            const newYearSongIndex = Math.floor(Math.random()*2 + songs.length - 2);
             return `
                 ${
                     chosenDateObj.getFullYear() === 2020
                         ?   `<h3>
                                 Your song for ${chosenDate} is: 
-                                <a href="https://www.youtube.com/watch?v=${songs[songIndex].youtubeCode}" target="_blank">${songs[songIndex].title}</a>
+                                <a  href="https://www.youtube.com/watch?v=${
+                                        chosenDateObj.getDate() === 30
+                                            ?   songs[newYearSongIndex].youtubeCode
+                                            :   songs[songIndex].youtubeCode
+                                    }" 
+                                    target="_blank"
+                                >
+                                    ${
+                                        chosenDateObj.getDate() === 30
+                                            ?   songs[newYearSongIndex].title
+                                            :   songs[songIndex].title
+                                    }
+                                </a>
                             </h3>`
                         :   `<h3>
                                 Covid be gone by ${chosenDate}!

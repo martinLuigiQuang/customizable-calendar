@@ -42,14 +42,14 @@ const holidaySongs = function() {
                         ?   `<h3>
                                 Your song for ${chosenDate} is: 
                                 <a  href="https://www.youtube.com/watch?v=${
-                                        chosenDateObj.getDate() === 30
+                                        chosenDateObj.getDate() === 31
                                             ?   songs[newYearSongIndex].youtubeCode
                                             :   songs[songIndex].youtubeCode
                                     }" 
                                     target="_blank"
                                 >
                                     ${
-                                        chosenDateObj.getDate() === 30
+                                        chosenDateObj.getDate() === 31
                                             ?   songs[newYearSongIndex].title
                                             :   songs[songIndex].title
                                     }

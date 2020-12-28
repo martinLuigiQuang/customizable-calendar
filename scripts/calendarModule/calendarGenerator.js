@@ -26,7 +26,7 @@ const calendarGenerator = function() {
             if (i < weekdayOfFirstDay || i >= weekdayOfFirstDay + numOfDaysInMonth) {
                 filledCalendar.push('');
             } else {
-                filledCalendar.push(convertDayToString(newDay));
+                filledCalendar.push(convertNumToString(newDay));
                 newDay++;
             };
         };
@@ -47,13 +47,13 @@ const calendarGenerator = function() {
     };
 
     // convertDayToString function to convert day values into strings; single-digit values are also converted into double-digit values
-    function convertDayToString(day) {
-        if (day < 10) {
-            day = '0' + day;
+    function convertNumToString(num) {
+        if (num < 10) {
+            num = '0' + num;
         } else {
-            day = '' + day;
+            num = '' + num;
         };
-        return day;
+        return num;
     };
 
     // isPast function to check if a particular day has gone by
@@ -152,13 +152,14 @@ const calendarGenerator = function() {
         [minimized, chosenDate, calendarYear, calendarMonth] = calendarInformation.setInformation();
         // filledCalendar local variable to hold the value returned from the function call to fillCalendar function
         const filledCalendar = fillCalendar();
+        const formattedChosenDate = [chosenDate.getYear(), convertNumToString(chosenDate.getMonth()), convertNumToString(chosenDate.getDate())];
         // If minimized; only generate the button with fontawesome calendar icon
         // Else generate the calendar navigation bar, weekdays, and the monthly calendar itself
         return `
             <label for="calendar">Pick a date:</label>
             <input 
                 type="text" name="calendar" id="calendar" 
-                ${chosenDate ? `value=${chosenDate.toLocaleDateString()}` : `placeholder="yyyy-mm-dd"`} 
+                ${chosenDate ? `value=${formattedChosenDate[0]}-${formattedChosenDate[1]}-${formattedChosenDate[2]}` : `placeholder="yyyy-mm-dd"`} 
                 readonly
             >
             <section class="calendar">

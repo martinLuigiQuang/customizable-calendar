@@ -7,7 +7,7 @@ const defaultCalendarStyling = function() {
                     display: -webkit-box;
                     display: -ms-flexbox;
                     display: flex;
-                    font-size: 25px;
+                    font-size: 20px;
                     position: relative;
                     -webkit-box-align: center;
                         -ms-flex-align: center;
@@ -18,7 +18,7 @@ const defaultCalendarStyling = function() {
                 }
                 
                 .datePicker input#calendar {
-                    font-size: 25px;
+                    font-size: 20px;
                     -ms-flex-item-align: start;
                         align-self: flex-start;
                     max-width: 220px;
@@ -61,7 +61,7 @@ const defaultCalendarStyling = function() {
                     padding: 10px;
                     position: absolute;
                     top: 35px;
-                    right: 35px;
+                    right: 60px;
                     z-index: 10;
                     -ms-grid-columns: (calc((100% - 12px)/7))[7];
                         grid-template-columns: repeat(7, calc((100% - 12px)/7));
@@ -79,6 +79,7 @@ const defaultCalendarStyling = function() {
                     display: -ms-grid;
                     display: grid;
                     gap: 2px;
+                    position: relative;
                     -webkit-box-align: center;
                         -ms-flex-align: center;
                             align-items: center;
@@ -86,11 +87,82 @@ const defaultCalendarStyling = function() {
                         grid-template-columns: repeat(7, 1fr);
                 }
                 
-                .calendarDisplay .calendarNav h3 {
-                    font-size: 16px;
+                .calendarDisplay .calendarNav .monthInfo {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    gap: 2px;
+                    -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                            justify-content: center;
                     -ms-grid-column: 2;
                     -ms-grid-column-span: 4;
                     grid-column: 2 / span 4;
+                }
+
+                .monthInfo button {
+                    font-size: 16px;
+                    background-color: whitesmoke;
+                }
+
+                .selectionPanel {
+                    display: -ms-grid;
+                    display: grid;
+                    position: absolute;
+                    top: 30px;
+                    width: 100%;
+                    background-color: white;
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-content: center;
+                }
+
+                .selectionPanel--month,
+                .selectionPanel--year {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .selectionPanel--month {
+                    display: -ms-grid;
+                    display: grid;
+                    gap: 2px;
+                    -ms-grid-columns: (1fr)[4];
+                        grid-template-columns: repeat(4, 1fr);
+                    -ms-grid-rows: (1fr)[3];
+                        grid-template-rows: repeat(3, 50px);
+                }
+
+                .selectionPanel--year,
+                .selectionPanel--year--display,
+                .selectionPanel--year--nav {
+                    display: -ms-grid;
+                    display: grid;
+                    gap: 2px;
+                }
+
+                .selectionPanel--year--display {
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-content: center;
+                    -ms-grid-columns: (1fr)[4];
+                        grid-template-columns: repeat(4, 1fr);
+                    -ms-grid-rows: (1fr)[3];
+                        grid-template-rows: repeat(3, 48px);
+                }
+
+                .selectionPanel--year--display .selection:nth-child(9) {
+                    -ms-grid-column: 2;
+                    grid-column: 2;
+                }
+
+                .selectionPanel--year--nav {
+                    height: 30px;
+                    -webkit-box-pack: space-between;
+                        -ms-flex-pack: space-between;
+                            justify-content: space-between;
+                    -ms-grid-columns: (1fr)[2];
+                        grid-template-columns: repeat(2, 30px);
                 }
 
                 .calendarDisplay .weekdays {

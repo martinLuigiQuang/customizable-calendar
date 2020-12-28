@@ -22,18 +22,23 @@ const holidaySongs = function() {
     ];
 
     // function to handle form submission
-    const handleFormSubmit = function(event) {
+    function handleFormSubmit(event) {
         event.preventDefault();
         // get the value of the date picker by getting the value of input#calendar
         const chosenDate = document.getElementById('calendar').value;
         const song = getSong(chosenDate);
         holidaySongSection.innerHTML = song;
-    }
+    };
+
+    // function parse chosenDate; this is to ensure the programme works consistently across different servers
+    function parseChosenDate(chosenDate) {
+        return [chosenDate.slice(0, 4), chosenDate.slice(5, 7), chosenDate.slice(8, 10)]
+    };
     
     // function to get the song from the collection depending on the choice of dates; if the date chosen is in the new year, display customized message
-    const getSong = function(chosenDate) {
+    function getSong(chosenDate) {
         if (chosenDate) {
-            const chosenDateObj = new Date(chosenDate);
+            const chosenDateObj = new Date(parseChosenDate(chosenDate));
             const songIndex = Math.floor(Math.random()*(songs.length - 2));
             const newYearSongIndex = Math.floor(Math.random()*2 + songs.length - 2);
             return `
@@ -66,13 +71,13 @@ const holidaySongs = function() {
     };
 
     // function to bind the form element to a local variable and onsubmit method to it
-    const appendSongToDOM = function() {
+    function appendSongToDOM() {
         const form = document.getElementsByTagName('form')[0];
         form.onsubmit = (event) => handleFormSubmit(event);
     };
 
     // Wrap the local method in an init function to be exported
-    const init = function() {
+    function init() {
         appendSongToDOM();
     }
 

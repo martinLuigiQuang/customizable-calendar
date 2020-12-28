@@ -152,7 +152,7 @@ const calendarGenerator = function() {
         [minimized, chosenDate, calendarYear, calendarMonth] = calendarInformation.setInformation();
         // filledCalendar local variable to hold the value returned from the function call to fillCalendar function
         const filledCalendar = fillCalendar();
-        const formattedChosenDate = [chosenDate.getYear(), convertNumToString(chosenDate.getMonth()), convertNumToString(chosenDate.getDate())];
+        const formattedChosenDate = [chosenDate.getFullYear(), convertNumToString(chosenDate.getMonth()), convertNumToString(chosenDate.getDate())];
         // If minimized; only generate the button with fontawesome calendar icon
         // Else generate the calendar navigation bar, weekdays, and the monthly calendar itself
         return `

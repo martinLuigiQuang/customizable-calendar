@@ -39,6 +39,7 @@ const holidaySongs = function() {
     function getSong(chosenDate) {
         if (chosenDate) {
             const chosenDateObj = new Date(parseChosenDate(chosenDate));
+            console.log(parseChosenDate(chosenDate))
             const songIndex = Math.floor(Math.random()*(songs.length - 2));
             const newYearSongIndex = Math.floor(Math.random()*2 + songs.length - 2);
             return `

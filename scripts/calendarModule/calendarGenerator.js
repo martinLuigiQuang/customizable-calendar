@@ -159,9 +159,7 @@ const calendarGenerator = function() {
             <input 
                 type="text" name="calendar" id="calendar" 
                 ${chosenDate 
-                    ? `value=${chosenDate.getFullYear()}
-                            -${convertNumToString(chosenDate.getMonth())}
-                            -${convertNumToString(chosenDate.getDate())}` 
+                    ? `value=${chosenDate.getFullYear()}-${convertNumToString(chosenDate.getMonth() + 1)}-${convertNumToString(chosenDate.getDate())}` 
                     : `placeholder="yyyy-mm-dd"`} 
                 readonly
             >

@@ -154,7 +154,7 @@ const calendarGenerator = function() {
         const filledCalendar = fillCalendar();
         // If minimized; only generate the button with fontawesome calendar icon
         // Else generate the calendar navigation bar, weekdays, and the monthly calendar itself
-        return `
+        const calendarDisplay = `
             <label for="calendar">Pick a date:</label>
             <input 
                 type="text" name="calendar" id="calendar" 
@@ -187,10 +187,18 @@ const calendarGenerator = function() {
                 }
             </section>
         `;
+        // create a template element to hold the HTML codes for the calendar display; the template element is exported to calendar.js module as a DOM node
+        const templateFragment = document.createElement('template');
+        templateFragment.innerHTML = calendarDisplay;
+        return templateFragment;
+    };
+
+    function generateCalendar() {
+        return createCalendarDisplay();
     };
 
     return {
-        createCalendarDisplay: createCalendarDisplay
+        generateCalendar: generateCalendar
     };
 }();
 

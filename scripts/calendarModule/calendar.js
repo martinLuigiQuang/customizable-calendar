@@ -6,7 +6,7 @@ import monthYearSelection from './monthYearSelection.js';
 const calendar = function() {
     const calendarContainer = document.getElementsByClassName('datePicker')[0]; // bind the calendar to the DOM element with class name 'calendar'
     const form = calendarContainer.parentElement; // the form element that should be the parent of the calendarContainer; will log an error if the parent element is not a <form>
-    
+
     // Initial imports from calendarGenerator module; updated values will be exported back to calendarGenerator by the calendarGenerator.importFromCalendar() method
     const [,, today] = calendarInformation.exportConstants(); // the current date when the calendar is loaded
     let [minimized] = calendarInformation.setInformation(); // variable to toggle calendar between normal and minimized; default is normal; if minimized, the value is set to 'minimized', else it is an empty string
@@ -15,11 +15,12 @@ const calendar = function() {
     function buildCalendar() {
         // import the 'minimized' value from calendarGenerator module
         [minimized] = calendarInformation.setInformation();
-        // calendarDisplay local variable to hold the value returned from the function call t0 createCalendarDisplay function
-        const calendarDisplay = calendarGenerator.createCalendarDisplay();
+        // calendarDisplay local variable to hold the value returned from the function call to generateCalendar function
+        const calendarDisplay = calendarGenerator.generateCalendar();
 
-        // Insert the calendarDisplay, which is the HTML for the calendar display, into the DOM element held by the global variable calendarContainer
-        calendarContainer.innerHTML = calendarDisplay;
+        // Clear inner HTML of the calendarContainer then append the new content of calendarDisplay to it in order to update the calendar
+        calendarContainer.innerHTML = '';
+        calendarContainer.appendChild(calendarDisplay.content);
 
         // Bind the input#calendar to a local variable
         const dateInput = document.getElementById('calendar');

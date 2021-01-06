@@ -16,10 +16,8 @@ const app = {
 if (document.readyState === 'complete') {
     app.init();
 } else {
-    const contentLoaded = document.addEventListener('DOMContentLoaded', function() {
-        app.init();
-    });
-    document.removeEventListener('DOMContentLoaded', contentLoaded);
+    window.addEventListener('DOMContentLoaded', app.init());
+    window.removeEventListener('DOMContentLoaded', app.init());
 };
 
 //MIT License

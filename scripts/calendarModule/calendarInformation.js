@@ -7,6 +7,7 @@ const calendarInformation = function() {
     let calendarMonth = today.getMonth(); // the index of the month to display on calendar navigation bar; January = 0, February = 1, etc...
     let calendarYear = today.getFullYear(); // the year to display on calendar navigation bar
 
+    // function to get calendar information from other modules and update the calendarInformation module
     function getInformation(min, date, year, month) {
         minimized = min;
         chosenDate = date;
@@ -14,10 +15,12 @@ const calendarInformation = function() {
         calendarMonth = month;
     };
 
+    // function export the updated calendarInformation to other modules; the values exported by setInformation function will be updated in other modules and imported back to calendarInformation via getInformation function
     function setInformation() {
         return [minimized, chosenDate, calendarYear, calendarMonth];
     };
 
+    // function to export the constants of calendarInformation: month names, weekdays, and today Date object
     function exportConstants() {
         return [months, weekdays, today];
     };

@@ -2,7 +2,7 @@ import calendarInformation from './calendarInformation.js';
 
 const monthYearSelection = function() {
     // initial import of months array and today Date object from calendarInformation
-    const [months] = calendarInformation.exportConstants();
+    const [months,, today] = calendarInformation.exportConstants();
     // initial import of chosenDate, calendarYear, and calendarMonth from calendarInformation
     let [, chosenDate, calendarYear, calendarMonth] = calendarInformation.setInformation();
     // initial currentDecade based on the current calendarYear;

@@ -36,33 +36,35 @@ const calendar = function() {
         if (!minimized) {
             // calendar local variable to hold the DOM element with class name 'calendarDisplay', i.e. the <form class='calendarDisplay'> that was created by createCalendarDisplay function
             const calendar = calendarContainer.getElementsByClassName('calendarDisplay')[0];
-
-            // bind previousMonth button to a local variable and add an event listener to it
-            const previousButton = calendar.getElementsByClassName('previousMonth')[0];
-            previousButton.onclick = () => calendarEventListeners.handleCalendarNav(-1, () => buildCalendar());
-            
-            // bind nextMonth button to a local variable and add an event listener to it
-            const nextButton = calendar.getElementsByClassName('nextMonth')[0];
-            nextButton.onclick = () => calendarEventListeners.handleCalendarNav(1, () => buildCalendar());
-            
-            // bind collapse button to a local variable and add an event listener to it
-            const collapseButton = calendar.getElementsByClassName('collapseButton')[0];
-            collapseButton.onclick = () => calendarEventListeners.handleCollapse(() => buildCalendar());
-            
-            // bind calendar date buttons to a local array and add an event listener to each of them
-            const calendarDates = [...calendar.getElementsByClassName('day')];
-            calendarDates.forEach((date) => {
-                date.onclick = () => {
-                    calendarEventListeners.handleChosenDate(date.value, () => buildCalendar());
+            // click event delegation
+            calendar.onclick = (event) => {
+                // bind event listeners to each of the date entries
+                if (event.target.classList.value.includes('day') || event.target.parentNode.classList.value.includes('day')) {
+                    let day = event.target.children.length ? event.target.value : event.target.parentNode.value;
+                    calendarEventListeners.handleChosenDate(day, () => buildCalendar());
                     calendarEventListeners.handleCollapse(() => buildCalendar());
+                }
+                // bind event listener to the previous month button
+                else if (event.target.classList.value.includes('previousMonth') || event.target.parentNode.classList.value.includes('previousMonth')) {
+                    calendarEventListeners.handleCalendarNav(-1, () => buildCalendar());
+                } 
+                // bind event listener to the next month button
+                else if (event.target.classList.value.includes('nextMonth') || event.target.parentNode.classList.value.includes('nextMonth')) {
+                    calendarEventListeners.handleCalendarNav(1, () => buildCalendar());
+                } 
+                // bind event listener to the collapse calendar button
+                else if (event.target.classList.value.includes('collapseButton') || event.target.parentNode.classList.value.includes('collapseButton')) {
+                    calendarEventListeners.handleCollapse(() => buildCalendar());
+                } 
+                // bind event listener to the month selection button
+                else if (event.target.classList.value.includes('monthButton')) {
+                    monthYearSelection.handleSelectionButtons(false, () => buildCalendar());
+                } 
+                // bind event listener to the year selection button
+                else if (event.target.classList.value.includes('yearButton')) {
+                    monthYearSelection.handleSelectionButtons(true, () => buildCalendar());
                 };
-            });
-
-            // bind the month and year selection buttons to local variables and attach event listeners to them
-            const monthSelectionButton = calendar.getElementsByClassName('monthButton')[0];
-            monthSelectionButton.onclick = () => monthYearSelection.handleSelectionButtons(false, () => buildCalendar()); // false boolean value to build month selectio panel; true boolean value to build year selection panel
-            const yearSelectionButton = calendar.getElementsByClassName('yearButton')[0];
-            yearSelectionButton.onclick = () => monthYearSelection.handleSelectionButtons(true, () => buildCalendar());
+            };
         };
     };
 
